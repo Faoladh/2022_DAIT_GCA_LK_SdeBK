@@ -18,17 +18,30 @@ projectData <- as.table(projectData)
 
 projectData
 
-df <- data.frame(Treatment=c('Control', 'Meditation'), Results=c('Anxiety', 'Pain'))
+P <- projectData$Pain; P
 
-df
+A <- projectData$Anxiety; A
 
-projectData <- table(df$Treatment, df$Results)
+C <- projectData$`C/M`; C
 
-projectData
+x <- 0
 
-twoWay <- matrix(c(projectData), ncol = 2)
-rownames(twoWay) <- c('Control', 'Meditation')
-colnames(twoWay) <- c('Anxiety', 'Pain')
-
-margin.table(twoWay, margin = 1)
-
+While(x <= 100){
+  
+  if(projectData[x] == 'Control')
+    {
+    
+    print(P[x], A[x])
+    
+    x <- x+1
+    
+  }
+  
+  else
+    {
+    
+    print(P[x], A[x])
+    
+  }
+  
+}
