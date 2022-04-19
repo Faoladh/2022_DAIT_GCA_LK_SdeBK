@@ -26,3 +26,9 @@ projectData <- table(df$Treatment, df$Results)
 
 projectData
 
+twoWay <- matrix(c(projectData), ncol = 2)
+rownames(twoWay) <- c('Control', 'Meditation')
+colnames(twoWay) <- c('Anxiety', 'Pain')
+
+margin.table(twoWay, margin = 1)
+
