@@ -17,3 +17,12 @@ colnames(projectData) <- c('Sex', 'C/M', 'Anxiety', 'Pain')
 projectData <- as.table(projectData)
 
 projectData
+
+df <- data.frame(Treatment=c('Control', 'Meditation'), Results=c('Anxiety', 'Pain'))
+
+df
+
+projectData <- table(df$Treatment, df$Results)
+
+projectData
+
