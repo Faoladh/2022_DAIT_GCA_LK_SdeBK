@@ -10,3 +10,10 @@
 setwd("~/GitHub/Data-Analytics-Rep")
 #Load Data from .csv file
 projectData <- read.csv("dentistry_meditation.csv")
+summary(projectData)
+rownames(projectData) <- c('Control', 'Meditation')
+colnames(projectData) <- c('Intraoperative Anxiety (Galvanic Response)', 'Perceived Pain (Verbal Numerical Rating Scale)')
+
+projectData <- as.table(projectData)
+
+projectData
