@@ -12,7 +12,7 @@ setwd("~/GitHub/Data-Analytics-Rep")
 projectData <- read.csv("dentistry_meditation.csv")
 summary(projectData)
 rownames(projectData) <- c('Control', 'Meditation')
-colnames(projectData) <- c('Intraoperative Anxiety (Galvanic Response)', 'Perceived Pain (Verbal Numerical Rating Scale)')
+colnames(projectData) <- c('Sex', 'C/M', 'Anxiety', 'Pain')
 
 projectData <- as.table(projectData)
 
