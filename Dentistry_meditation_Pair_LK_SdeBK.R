@@ -6,6 +6,7 @@
 # Note:         
 # See:          
 
-
+#set working directory
+setwd("~/GitHub/Data-Analytics-Rep")
 #Load Data from .csv file
 projectData <- read.csv("dentistry_meditation.csv")
