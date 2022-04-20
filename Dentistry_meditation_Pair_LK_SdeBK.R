@@ -37,6 +37,7 @@ treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
 treatmentAnxiety.ttest #print result
 
 x <- 1
+a <- 1
 
 y <- treatment[1]
 
@@ -50,11 +51,16 @@ while(x <= 100)
 {
   if(treatment[x] == y)
   {
-    print("this is the meditation data: "); print(pain[x])
-  }
-  if(treatment[x] == z)
-  {
-    print("this the control data: "); print(pain[x])
+    print("this is the meditation data: "); print(pain[x]); print(typeof(pain[x]))
   }
   x <- x+1
+}
+
+while(a <= 100)
+{
+  if(treatment[a] == z)
+  {
+    print("this the control data: "); print(pain[a]); print(typeof(pain[a]))
+  }
+  a <- a+1
 }
