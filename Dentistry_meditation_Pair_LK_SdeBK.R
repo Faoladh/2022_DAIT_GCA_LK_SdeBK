@@ -9,6 +9,9 @@
 #set working directory
 setwd("~/GitHub/Data-Analytics-Rep")
 projectData <- read.csv("dentistry_meditation.csv")
+summary(projectData)
+
+summary(projectData$Treatment)
 
 #extract The Treatment Data and Store as Variable
 treatment <-projectData$Treatment; treatment
@@ -36,31 +39,10 @@ treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
                                  subset= treatment %in% c("Meditation", "Control"))
 treatmentAnxiety.ttest #print result
 
-x <- 1
-a <- 1
-
 y <- treatment[1]
 
-y
+library(dplyr)
 
-z <- treatment[2]
+df1 <- subset(projectData, treatment == y)
 
-z
-
-while(x <= 100)
-{
-  if(treatment[x] == y)
-  {
-    print("this is the meditation data: "); print(pain[x]); print(typeof(pain[x]))
-  }
-  x <- x+1
-}
-
-while(a <= 100)
-{
-  if(treatment[a] == z)
-  {
-    print("this the control data: "); print(pain[a]); print(typeof(pain[a]))
-  }
-  a <- a+1
-}
+df1
