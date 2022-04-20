@@ -43,11 +43,11 @@ treatmentAnxiety.ttest$p.value
 
 
 plot(x = 1,                 
-     xlab = "X Label", 
-     ylab = "Y Label",
-     xlim = c(0, 10), 
+     xlab = "Intraoperative Anxiety [Galvanic Response]", 
+     ylab = "Level [1-10]",
+     xlim = c(0, 50), 
      ylim = c(0, 10),
-     main = "Blank Plotting Canvas",
+     main = "Measured Anxiety",
      type = "n")
 points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Meditation"],
        pch = 16,
@@ -56,4 +56,7 @@ points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Tr
        pch = 16,
        col = "red")
 
-
+legend("bottomright",                  # Put legend in bottom right of graph
+       legend = c("Meditation", "Control"), # Names of groups
+       col = c("green", "red"),      # Colors of symbols
+       pch = c(16, 16))    
