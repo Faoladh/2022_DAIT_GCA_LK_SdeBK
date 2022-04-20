@@ -60,3 +60,22 @@ legend("bottomright",                  # Put legend in bottom right of graph
        legend = c("Meditation", "Control"), # Names of groups
        col = c("green", "red"),      # Colors of symbols
        pch = c(16, 16))    
+
+plot(x = 1,                 
+     xlab = "Perceived.Pain Verbal Numerical Rating Scale.", 
+     ylab = "Level [1-10]",
+     xlim = c(0, 50), 
+     ylim = c(0, 10),
+     main = "Measured Pain",
+     type = "n")
+points(x = projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.[projectData$Treatment == "Meditation"],
+       pch = 16,
+       col = "Blue")
+points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Control"],
+       pch = 16,
+       col = "Orange")
+
+legend("bottomright",                  # Put legend in bottom right of graph
+       legend = c("Meditation", "Control"), # Names of groups
+       col = c("green", "red"),      # Colors of symbols
+       pch = c(16, 16))    
