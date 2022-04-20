@@ -38,17 +38,21 @@ treatmentAnxiety.ttest #print result
 
 x <- 1
 
-y <- length(treatment[1])
+y <- treatment[1]
 
-z <- length(treatment[2])
+y
+
+z <- treatment[2]
+
+z
 
 while(x <= 100)
 {
-  if(length(treatment[x]) == y)
+  if(treatment[x] == y)
   {
     print("this is the meditation data: "); print(pain[x])
   }
-  if(length(treatment[x]) == z)
+  if(treatment[x] == z)
   {
     print("this the control data: "); print(pain[x])
   }
