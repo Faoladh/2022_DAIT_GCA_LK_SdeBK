@@ -1,6 +1,6 @@
 # Author:       Sadbh de Buitléir-Kearney, Leo Kenny
 # Title:        PgDip Immersive Technology Pair Project
-# Description:  Illustrating types, operators, constants, and functions 
+# Description:  Pair Project for PgDipImmersive Tech 2022
 # Date:         19/04/2022
 # Version:      1.0
 # Note:         
@@ -18,10 +18,10 @@ projectData <- read.csv("dentistry_meditation.csv")
 treatment <-projectData$Treatment; treatment
 
 #Extract Anxiety Data and Store as Variable
-anxiety <-projectData$Intraoperative.Anxiety..Galvanic.Response.; anxiety
+anxiety <-projectData$Intraoperative.Anxiety..Galvanic.Response.; 
 
 #Extract Pain Data and Store as Variable
-pain <-projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.; pain
+pain <-projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.; 
 
 #scatterplot of anxiety and pain
 #plot(x = anxiety, y=pain)
@@ -41,12 +41,12 @@ treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
 treatmentAnxiety.ttest #print result
 treatmentAnxiety.ttest$p.value
 
-
+#Anxiety Plot
 plot(x = 1,                 
      xlab = "Intraoperative Anxiety [Galvanic Response]", 
      ylab = "Level [1-10]",
      xlim = c(0, 50), 
-     ylim = c(0, 10),
+     ylim = c(5, 10),
      main = "Measured Anxiety",
      type = "n")
 points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Meditation"],
@@ -55,27 +55,29 @@ points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Tr
 points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Control"],
        pch = 16,
        col = "red")
-
+#Anxiety Legend
 legend("bottomright",                  # Put legend in bottom right of graph
        legend = c("Meditation", "Control"), # Names of groups
        col = c("green", "red"),      # Colors of symbols
        pch = c(16, 16))    
 
+
+#Pain Plot
 plot(x = 1,                 
-     xlab = "Perceived.Pain Verbal Numerical Rating Scale.", 
+     xlab = "Perceived Pain [Verbal Numerical Rating Scale]", 
      ylab = "Level [1-10]",
      xlim = c(0, 50), 
-     ylim = c(0, 10),
+     ylim = c(5, 10),
      main = "Measured Pain",
      type = "n")
 points(x = projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.[projectData$Treatment == "Meditation"],
        pch = 16,
        col = "Blue")
-points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Control"],
+points(x = projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.[projectData$Treatment == "Control"],
        pch = 16,
        col = "Orange")
-
+#Pain Legend
 legend("bottomright",                  # Put legend in bottom right of graph
        legend = c("Meditation", "Control"), # Names of groups
-       col = c("green", "red"),      # Colors of symbols
+       col = c("Blue", "orange"),      # Colors of symbols
        pch = c(16, 16))    
