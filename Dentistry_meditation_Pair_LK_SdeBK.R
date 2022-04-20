@@ -8,40 +8,30 @@
 
 #set working directory
 setwd("~/GitHub/Data-Analytics-Rep")
-#Load Data from .csv file
 projectData <- read.csv("dentistry_meditation.csv")
-summary(projectData)
-rownames(projectData) <- c('Control', 'Meditation')
-colnames(projectData) <- c('Sex', 'C/M', 'Anxiety', 'Pain')
 
-projectData <- as.table(projectData)
+#extract The Treatment Data and Store as Variable
+treatment <-projectData$Treatment; treatment
 
-projectData
+#Extract Anxiety Data and Store as Variable
+anxiety <-projectData$Intraoperative.Anxiety..Galvanic.Response.; anxiety
 
-P <- projectData$Pain; P
+#Extract Pain Data and Store as Variable
+pain <-projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.; pain
 
-A <- projectData$Anxiety; A
+#scatterplot of anxiety and pain test 
+plot(x = anxiety, y=pain)
 
-C <- projectData$`C/M`; C
 
-x <- 0
+#t-test to see weather meditation or control feels more pain
+treatmentPain.ttest <- t.test(formula= pain ~ treatment,
+                              data = projectData,
+                              subset= treatment %in% c("Meditation", "Control"))
+treatmentPain.ttest #print result
 
-While(x <= 100){
-  
-  if(projectData[x] == 'Control')
-    {
-    
-    print(P[x], A[x])
-    
-    x <- x+1
-    
-  }
-  
-  else
-    {
-    
-    print(P[x], A[x])
-    
-  }
-  
-}
+
+#t-test to see weather meditation of control feels more anxiety
+treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
+                                 data = projectData,
+                                 subset= treatment %in% c("Meditation", "Control"))
+treatmentAnxiety.ttest #print result
