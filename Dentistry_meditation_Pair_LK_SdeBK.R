@@ -35,3 +35,22 @@ treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
                                  data = projectData,
                                  subset= treatment %in% c("Meditation", "Control"))
 treatmentAnxiety.ttest #print result
+
+x <- 1
+
+y <- length(treatment[1])
+
+z <- length(treatment[2])
+
+while(x <= 100)
+{
+  if(length(treatment[x]) == y)
+  {
+    print("this is the meditation data: "); print(pain[x])
+  }
+  if(length(treatment[x]) == z)
+  {
+    print("this the control data: "); print(pain[x])
+  }
+  x <- x+1
+}
