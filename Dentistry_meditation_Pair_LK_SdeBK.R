@@ -8,10 +8,11 @@
 
 #set working directory
 setwd("~/GitHub/Data-Analytics-Rep")
-projectData <- read.csv("dentistry_meditation.csv")
-summary(projectData)
+#read csv file
 
-summary(projectData$Treatment)
+projectData <- read.csv("dentistry_meditation.csv")
+
+
 
 #extract The Treatment Data and Store as Variable
 treatment <-projectData$Treatment; treatment
@@ -22,8 +23,8 @@ anxiety <-projectData$Intraoperative.Anxiety..Galvanic.Response.; anxiety
 #Extract Pain Data and Store as Variable
 pain <-projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.; pain
 
-#scatterplot of anxiety and pain test 
-plot(x = anxiety, y=pain)
+#scatterplot of anxiety and pain
+#plot(x = anxiety, y=pain)
 
 
 #t-test to see weather meditation or control feels more pain
@@ -31,18 +32,28 @@ treatmentPain.ttest <- t.test(formula= pain ~ treatment,
                               data = projectData,
                               subset= treatment %in% c("Meditation", "Control"))
 treatmentPain.ttest #print result
-
+treatmentPain.ttest$p.value
 
 #t-test to see weather meditation of control feels more anxiety
 treatmentAnxiety.ttest <- t.test(formula= anxiety ~ treatment,
                                  data = projectData,
                                  subset= treatment %in% c("Meditation", "Control"))
 treatmentAnxiety.ttest #print result
+treatmentAnxiety.ttest$p.value
 
-y <- treatment[1]
 
-library(dplyr)
+plot(x = 1,                 
+     xlab = "X Label", 
+     ylab = "Y Label",
+     xlim = c(0, 10), 
+     ylim = c(0, 10),
+     main = "Blank Plotting Canvas",
+     type = "n")
+points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Meditation"],
+       pch = 16,
+       col = "Green")
+points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Control"],
+       pch = 16,
+       col = "red")
 
-df1 <- subset(projectData, treatment == y)
 
-df1
