@@ -23,9 +23,13 @@ anxiety <-projectData$Intraoperative.Anxiety..Galvanic.Response.;
 #Extract Pain Data and Store as Variable
 pain <-projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.; 
 
-#scatterplot of anxiety and pain
-#plot(x = anxiety, y=pain)
+#quantile of pain
+quantile (pain, probs=c(0., 0.25, 0.75, 1))
 
+#quantile of anxiety
+quantile (anxiety, probs=c(0., 0.25, 0.75, 1))
+
+##NTS FIGURE OUT HOW TO SUBDIVIDE THESE BY TREATMENT##
 
 #t-test to see weather meditation or control feels more pain
 treatmentPain.ttest <- t.test(formula= pain ~ treatment,
@@ -49,10 +53,10 @@ plot(x = 1,
      ylim = c(5, 10),
      main = "Measured Anxiety",
      type = "n")
-points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Meditation"],
+points(x = anxiety[projectData$Treatment == "Meditation"],
        pch = 16,
        col = "Green")
-points(x = projectData$Intraoperative.Anxiety..Galvanic.Response.[projectData$Treatment == "Control"],
+points(x = anxiety[projectData$Treatment == "Control"],
        pch = 16,
        col = "red")
 #Anxiety Legend
@@ -70,10 +74,10 @@ plot(x = 1,
      ylim = c(5, 10),
      main = "Measured Pain",
      type = "n")
-points(x = projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.[projectData$Treatment == "Meditation"],
+points(x = pain[projectData$Treatment == "Meditation"],
        pch = 16,
        col = "Blue")
-points(x = projectData$Perceived.Pain..Verbal.Numerical.Rating.Scale.[projectData$Treatment == "Control"],
+points(x = pain[projectData$Treatment == "Control"],
        pch = 16,
        col = "Orange")
 #Pain Legend
@@ -81,3 +85,10 @@ legend("bottomright",                  # Put legend in bottom right of graph
        legend = c("Meditation", "Control"), # Names of groups
        col = c("Blue", "orange"),      # Colors of symbols
        pch = c(16, 16))    
+#box plot of anxiety
+boxplot(anxiety~treatment, main="Boxplot of Anxiety According to Treatment", ylim=c(4,10))
+
+
+
+#box plot of pain
+boxplot(pain~treatment, main="Boxplot of Pain According to Treatment", ylim=c(5,10))
